@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zwen <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/28 02:45:25 by zwen              #+#    #+#             */
-/*   Updated: 2018/05/22 13:19:10 by zwen             ###   ########.fr       */
+/*   Created: 2018/04/22 18:59:19 by zwen              #+#    #+#             */
+/*   Updated: 2018/04/25 23:44:03 by zwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
+#include "libft.h"
 
-int		get_next_line(const int fd, char **line);
-#endif
+char	*ft_strtrim(char const *s)
+{
+	register char	*ret;
+	register char	*ptr;
+	register int	len;
+
+	if (!s)
+		return (NULL);
+	ptr = (char *)s;
+	while (ft_isspace(*ptr))
+		ptr++;
+	len = ft_strlen(ptr);
+	while (len && ft_isspace(ptr[len - 1]))
+		len--;
+	ret = (char *)malloc(sizeof(*ret) * (len + 1));
+	if (ret)
+		ret[len] = '\0';
+	return (ret ? ft_strncpy(ret, ptr, len) : NULL);
+}

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zwen <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/28 02:45:25 by zwen              #+#    #+#             */
-/*   Updated: 2018/05/22 13:19:10 by zwen             ###   ########.fr       */
+/*   Created: 2018/04/18 09:03:43 by zwen              #+#    #+#             */
+/*   Updated: 2018/04/24 21:41:46 by zwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
+#include "libft.h"
 
-int		get_next_line(const int fd, char **line);
-#endif
+char	*ft_strcpy(char *dst, const char *src)
+{
+	return (ft_memcpy(dst, src, ft_strlen(src) + 1));
+}

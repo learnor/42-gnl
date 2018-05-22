@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zwen <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/28 02:45:25 by zwen              #+#    #+#             */
-/*   Updated: 2018/05/22 13:19:10 by zwen             ###   ########.fr       */
+/*   Created: 2018/04/21 01:26:00 by zwen              #+#    #+#             */
+/*   Updated: 2018/04/26 01:04:41 by zwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
+#include "libft.h"
 
-int		get_next_line(const int fd, char **line);
-#endif
+char	*ft_strmap(char const *s, char (*f)(char))
+{
+	register char	*ptr;
+	register char	*ret;
+	register int	i;
+
+	ret = (s && f) ? (char *)malloc(sizeof(*ret) * (ft_strlen(s) + 1)) : NULL;
+	if (!ret)
+		return (NULL);
+	ptr = (char *)s;
+	i = -1;
+	while (ptr[++i])
+		ret[i] = f(ptr[i]);
+	ret[i] = '\0';
+	return (ret);
+}

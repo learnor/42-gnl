@@ -5,37 +5,32 @@
 #                                                     +:+ +:+         +:+      #
 #    By: zwen <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/05/05 18:58:52 by zwen              #+#    #+#              #
-#    Updated: 2018/05/06 08:57:24 by zwen             ###   ########.fr        #
+#    Created: 2018/04/17 20:39:55 by zwen              #+#    #+#              #
+#    Updated: 2018/05/22 13:49:04 by zwen             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = get_next_line
+NAME = libft.a
 
 SRC = *.c
 
-O-FILES = *.o
+O_FILES = *.o
 
-HEADER = libft/includes
+HEADER = -Iincludes
 
-FLAG = -Wall -Wextra -Werror
-
-lib:
-	make -C libft/ fclean && make -C libft/
+FLAG = -Wall -Wextra -Werror -c
 
 all: $(NAME)
 
-$(NAME): lib
-	gcc -g $(FLAG) -I $(HEADER) -o $(NAME).o -c $(NAME).c
-	gcc -g $(FLAG) -I $(HEADER) -o main.o -c main.c
-	gcc -g -o $(NAME) main.o $(NAME).o -I $(HEADER) -L libft/ -lft
+$(NAME):
+	gcc $(FLAG) $(HEADER) $(SRC)
+	ar rc $(NAME) $(O_FILES)
+	ranlib $(NAME)
 
 clean:
-	make -C libft/ clean
-	/bin/rm -f $(O-FILES)
+	/bin/rm -f $(O_FILES)
 
 fclean: clean
-	make -C libft/ fclean
 	/bin/rm -f $(NAME)
 
 re: fclean all
