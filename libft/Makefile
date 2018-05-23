@@ -6,7 +6,7 @@
 #    By: zwen <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/17 20:39:55 by zwen              #+#    #+#              #
-#    Updated: 2018/05/22 13:49:04 by zwen             ###   ########.fr        #
+#    Updated: 2018/05/22 17:21:57 by zwen             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,14 @@ O_FILES = *.o
 
 HEADER = -Iincludes
 
+OPT = -O2
+
 FLAG = -Wall -Wextra -Werror -c
 
 all: $(NAME)
 
 $(NAME):
-	gcc $(FLAG) $(HEADER) $(SRC)
+	gcc $(FLAG) $(OPT) $(HEADER) $(SRC)
 	ar rc $(NAME) $(O_FILES)
 	ranlib $(NAME)
 
