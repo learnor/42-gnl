@@ -6,7 +6,7 @@
 /*   By: zwen <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 23:22:01 by zwen              #+#    #+#             */
-/*   Updated: 2018/05/22 16:17:22 by zwen             ###   ########.fr       */
+/*   Updated: 2018/05/23 21:55:55 by zwen             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int			get_next_line(int fd, char **line)
 		ft_strdel(&ptr);
 	}
 	if (!str[fd] || !*str[fd])
-		return (0);
+		return (0 & (*line = ft_strnew(0)));
 	*line = str[fd];
 	ptr = ft_strchr(str[fd], '\n');
 	str[fd] = (ptr) ? ft_strdup(ptr + 1) : NULL;
